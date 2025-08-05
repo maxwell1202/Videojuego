@@ -24,5 +24,7 @@ public class Main {
 
         jugador2.sanar();
         jugador2.mostrarEstado();
+       
     }
+    
 }

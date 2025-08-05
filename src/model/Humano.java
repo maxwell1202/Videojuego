@@ -17,7 +17,7 @@ public class Humano extends Personaje {
     @Override
     public void atacar(Personaje objetivo) {
         int dano = arma.calcularDano();
-        System.out.println(nombre + " ataca con " + arma.getNombre() + " y hace " + dano + " de dannio.");
+        System.out.println(nombre + " ataca con " + arma.getNombre() + " y hace " + dano + " de dano.");
         objetivo.setVidaActual(objetivo.getVidaActual() - dano);
     }
 

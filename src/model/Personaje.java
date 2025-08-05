@@ -9,7 +9,7 @@ package model;
  * @author maxwe
  */
 public abstract class Personaje {
-     protected String nombre;
+    protected String nombre;
     protected int vidaActual;
     protected int energia;
     protected Arma arma;
