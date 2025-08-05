@@ -23,21 +23,31 @@ public class Elfo extends Personaje {
     @Override
 public void atacar(Personaje objetivo) {
     int dano = arma.calcularDano();
-    System.out.println(nombre + " infligio " + dano + " puntos de daño " + " con " + tipoMagia);
+    System.out.println(nombre + " infligio " + dano + " puntos de dano " + " con " + tipoMagia);
     
     objetivo.setVidaActual(objetivo.getVidaActual() - dano);
 }
-    @Override
-    public void sanar() {
-        double porcentaje = 0.75;
-        if (tipoMagia.equalsIgnoreCase("agua")) {
+   @Override
+public void sanar() {
+    double porcentaje = 0.75;
+    if (tipoMagia.equalsIgnoreCase("agua")) {
         porcentaje = 0.90;
-        }
-    int vidaRecuperada = (int)((100 - vidaActual) * porcentaje);
-    vidaActual += vidaRecuperada;
-    
-        System.out.println(nombre + " lanzó un hechizo de sanacion y se recupera " + vidaRecuperada + " de vida");
     }
+
+    int vidaMaxima = tipoMagia.equalsIgnoreCase("agua") ? 115 : 100;
+
+    int vidaFaltante = vidaMaxima - vidaActual;
+
+    if (vidaFaltante <= 0) {
+        System.out.println(nombre + " ya tiene la vida al maximo. No necesita curarse.");
+        return;
+    }
+
+    int vidaRecuperada = (int)(vidaFaltante * porcentaje);
+    vidaActual += vidaRecuperada;
+
+    System.out.println(nombre + " lanza un hechizo de sanacion y recupera " + vidaRecuperada + " de vida.");
+}
     
     @Override
     public void mostrarEstado() {

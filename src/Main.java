@@ -4,27 +4,34 @@
  */
 import model.Arma;
 import model.Humano;
-/**
- *
- * @author maxwe
- */
+import model.Elfo;
+
 public class Main {
     public static void main(String[] args) {
+        // Crear armas humanas
         Arma escopeta = new Arma("Escopeta", "fuego", 1, 5, 0.02);
-        Arma rifle = new Arma("Rifle Franco", "fuego", 1, 5, 0.0);
+        Arma rifle = new Arma("Rifle Francotirador", "fuego", 1, 5, 0.0);
 
-        Humano jugador1 = new Humano("Carlos", escopeta);
-        Humano jugador2 = new Humano("Laura", rifle);
+        // Crear armas mágicas para elfos
+        Arma magiaFuego = new Arma("Magia de Fuego", "magia", 1, 5, 0.10);
+        Arma magiaTierra = new Arma("Magia de Tierra", "magia", 1, 5, 0.02);
+        Arma magiaAire = new Arma("Magia de Aire", "magia", 4, 12, 0.0); //hara mas daño a distancia
+        Arma magiaAgua = new Arma("Magia de Agua", "magia", 1, 5, 0.0);
 
-        jugador1.mostrarEstado();
-        jugador2.mostrarEstado();
+        Humano humano = new Humano("Conejo", escopeta);
 
-        jugador1.atacar(jugador2);
-        jugador2.mostrarEstado();
+        Elfo elfo = new Elfo("Jose", magiaAgua, "agua");
 
-        jugador2.sanar();
-        jugador2.mostrarEstado();
-       
+        humano.mostrarEstado();
+        elfo.mostrarEstado();
+
+        elfo.atacar(humano);
+        humano.mostrarEstado();
+
+        humano.atacar(elfo);
+        elfo.mostrarEstado();
+
+        elfo.sanar();
+        elfo.mostrarEstado();
     }
-    
 }
